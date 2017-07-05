@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
+//Rotas
+import { Routing, RoutingProviders } from './app.routing';
 //Root
 import { AppComponent } from './app.component';
 //shared
@@ -31,7 +34,9 @@ import { CartPageComponent } from './Pages/cart-page/cart-page.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    ReactiveFormsModule,
+    HttpModule,
+    Routing
   ],
   providers: [],
   bootstrap: [AppComponent]

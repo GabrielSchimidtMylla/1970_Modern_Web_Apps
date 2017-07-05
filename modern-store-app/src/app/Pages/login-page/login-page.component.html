@@ -4,25 +4,27 @@
       <h1 class="title pacifico larger-text">
         Modern Web Store
       </h1>
-      <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
-          <div class="field">
-            <p class="control">
-              <input class="input" type="text" placeholder="Usuário">
+      <form [formGroup]="form">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <div class="field">
+              <p class="control">
+                <input class="input" type="email" placeholder="E-mail" formControlName="email" [ngClass]="{'is-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="password" placeholder="Senha" formControlName="password" [ngClass]="{'is-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+              </p>
+            </div>
+            <p>
+              <button type="button" (click)="submit()" [disabled]="!form.valid" class="button is-primary is-inverted is-outlined is-fullwidth">Entrar</button>
+              <br>
+              <a routerLink="/signup" href="#" class="button is-link is-fullwidth">Ainda não sou cadastrado</a>
             </p>
           </div>
-          <div class="field">
-            <p class="control">
-              <input class="input" type="password" placeholder="Senha">
-            </p>
-          </div>
-          <p>
-            <a class="button is-primary is-inverted is-outlined is-fullwidth">Entrar</a>
-            <br>
-            <a href="#" class="button is-link is-fullwidth">Ainda não sou cadastrado</a>
-          </p>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>
