@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
+import { DataService } from './../../Services/data.service';
+
 import { CustomValidator } from '../../Validators/custom.validator';
 import { UI } from '../../Util/ui';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  providers: [ UI ]
+  providers: [UI, DataService]
 })
 export class LoginPageComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private ui: UI) {
+  constructor(private formBuilder: FormBuilder, private ui: UI, private dataService: DataService) {
 
     this.form = this.formBuilder.group({
 
@@ -34,10 +36,18 @@ export class LoginPageComponent implements OnInit {
 
   };
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.dataService
+        .getCourses()
+        .subscribe(result => {
+          console.log(result);
+        },error => {
+          console.log(error);
+        });
+   }
 
   checkEmail() {
-    
+
     this.ui.lock("emailControl");
 
     setTimeout(() => {
@@ -45,18 +55,15 @@ export class LoginPageComponent implements OnInit {
     }, 3000);
   };
 
-  submit()
-  {
-
+  submit() {
+    this.dataService.createUser(this.form.value);
   };
 
-  showModal()
-  {
+  showModal() {
     this.ui.setActive("modal");
   };
 
-  hideModal()
-  {
+  hideModal() {
     this.ui.setInactive("modal");
   };
 
