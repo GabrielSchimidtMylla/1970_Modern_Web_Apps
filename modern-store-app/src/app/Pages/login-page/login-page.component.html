@@ -21,6 +21,7 @@
               <button type="button" (click)="submit()" [disabled]="!form.valid" class="button is-primary is-inverted is-outlined is-fullwidth">Entrar</button>
               <br>
               <a routerLink="/signup" href="#" class="button is-link is-fullwidth">Ainda não sou cadastrado</a>
+              <button (click)="showModal()" type="button" class="button is-link is-fullwidth">TERMOS DE USO </button>              
             </p>
           </div>
         </div>
@@ -28,3 +29,19 @@
     </div>
   </div>
 </section>
+
+<div class="modal" id="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Termos de Uso</p>
+      <button class="delete" (click)="hideModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      Aqui vão os termos de uso do site.
+    </section>
+    <footer class="modal-card-foot">
+      <button (click)="hideModal()" class="button">OK</button>
+    </footer>
+  </div>
+</div>
