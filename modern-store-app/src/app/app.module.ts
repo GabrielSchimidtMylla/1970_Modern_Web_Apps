@@ -21,6 +21,9 @@ import { CartPageComponent } from './Pages/cart-page/cart-page.component';
 //Services
 import { CartService } from './Services/cart.service'
 import { AuthService } from "app/Services/auth.service";
+//Directives
+import { NumberDirective } from "app/Directives/number.directive";
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { AuthService } from "app/Services/auth.service";
     HomePageComponent,
     LoginPageComponent,
     SignupPageComponent,
-    CartPageComponent
+    CartPageComponent,
+    NumberDirective
   ],
   imports: [
     BrowserModule,
