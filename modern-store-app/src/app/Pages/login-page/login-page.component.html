@@ -8,8 +8,8 @@
         <div class="columns">
           <div class="column is-half is-offset-one-quarter">
             <div class="field">
-              <p class="control" id="emailControl">
-                <input class="input" type="email" (blur)="checkEmail()" placeholder="E-mail" formControlName="email" [ngClass]="{'is-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+              <p class="control">
+                <input class="input" type="text" placeholder="Usuário" formControlName="username" [ngClass]="{'is-danger': (!form.controls.username.valid && !form.controls.username.pristine) }">
               </p>
             </div>
             <div class="field">

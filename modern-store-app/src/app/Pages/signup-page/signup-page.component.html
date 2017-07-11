@@ -4,50 +4,57 @@
       <h1 class="title pacifico larger-text">
         Modern Web Store
       </h1>
-      <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
-          <div class="field">
-            <p class="control">
-              <input class="input" type="text" placeholder="Nome">
+      <form [formGroup]="form">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <div class="field">
+              <p class="control">
+                <input class="input" type="text" placeholder="Nome" formControlName="firstName" [ngClass]="{'is-danger': (!form.controls.firstName.valid && !form.controls.firstName.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="text" placeholder="Sobrenome" formControlName="lastName" [ngClass]="{'is-danger': (!form.controls.lastName.valid && !form.controls.lastName.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="date" placeholder="Aniversário" formControlName="birthDate" [ngClass]="{'is-danger': (!form.controls.birthDate.valid && !form.controls.birthDate.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="email" placeholder="E-mail" formControlName="email" [ngClass]="{'is-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="text" placeholder="CPF" formControlName="document" [ngClass]="{'is-danger': (!form.controls.document.valid && !form.controls.document.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="text" placeholder="Usuário" formControlName="username" [ngClass]="{'is-danger': (!form.controls.username.valid && !form.controls.username.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="password" placeholder="Senha" formControlName="password" [ngClass]="{'is-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <input class="input" type="password" placeholder="Confirmar Senha" formControlName="confirmPassword" [ngClass]="{'is-danger': (!form.controls.confirmPassword.valid && !form.controls.confirmPassword.pristine) }">
+              </p>
+            </div>
+            <p>
+              <button type="button" (click)="submit()" [disabled]="!form.valid" class="button is-primary is-inverted is-outlined is-fullwidth">CADASTRAR</button>
+              <br>
+              <a href="#" class="button is-link is-fullwidth">Voltar</a>
             </p>
           </div>
-          <div class="field">
-            <p class="control">
-              <input class="input" type="text" placeholder="Sobrenome">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input class="input" type="text" placeholder="E-mail">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input class="input" type="text" placeholder="CPF">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input class="input" type="text" placeholder="Usuário">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input class="input" type="password" placeholder="Senha">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input class="input" type="password" placeholder="Confirmar Senha">
-            </p>
-          </div>
-          <p>
-            <a class="button is-primary is-inverted is-outlined is-fullwidth">Cadastrar</a>
-            <br>
-            <a href="#" class="button is-link is-fullwidth">Voltar</a>
-          </p>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>

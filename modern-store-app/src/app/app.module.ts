@@ -18,6 +18,9 @@ import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import { CartPageComponent } from './Pages/cart-page/cart-page.component';
+//Services
+import { CartService } from './Services/cart.service'
+import { AuthService } from "app/Services/auth.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +41,7 @@ import { CartPageComponent } from './Pages/cart-page/cart-page.component';
     HttpModule,
     Routing
   ],
-  providers: [],
+  providers: [ CartService, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

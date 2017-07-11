@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from "@angular/router";
 
 import { DataService } from './../../Services/data.service';
 
 import { CustomValidator } from '../../Validators/custom.validator';
 import { UI } from '../../Util/ui';
+
 
 @Component({
   selector: 'app-login-page',
@@ -15,15 +17,14 @@ export class LoginPageComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private ui: UI, private dataService: DataService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private ui: UI, private dataService: DataService) {
 
     this.form = this.formBuilder.group({
 
-      email: ['', Validators.compose([
+      username: ['', Validators.compose([
         Validators.minLength(5),
         Validators.maxLength(160),
-        Validators.required,
-        CustomValidator.EmailValidator
+        Validators.required
       ])],
 
       password: ['', Validators.compose([
@@ -34,29 +35,26 @@ export class LoginPageComponent implements OnInit {
 
     });
 
+    let token = localStorage.getItem("mws.token");
+    if (token) {
+      this.router.navigateByUrl("/home");
+    }
   };
 
   ngOnInit() {
-    this.dataService
-        .getCourses()
-        .subscribe(result => {
-          console.log(result);
-        },error => {
-          console.log(error);
-        });
-   }
-
-  checkEmail() {
-
-    this.ui.lock("emailControl");
-
-    setTimeout(() => {
-      this.ui.unlock("emailControl");
-    }, 3000);
-  };
+  }
 
   submit() {
-    this.dataService.createUser(this.form.value);
+    this.dataService
+      .authenticate(this.form.value)
+      .subscribe(result => {
+        localStorage.setItem('mws.token', result.token);
+        localStorage.setItem('mws.user', JSON.stringify(result.user));
+
+        this.router.navigateByUrl("/home");
+      }, error => {
+        console.log(error);
+      });
   };
 
   showModal() {
