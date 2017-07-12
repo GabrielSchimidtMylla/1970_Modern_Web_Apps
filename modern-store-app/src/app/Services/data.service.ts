@@ -32,4 +32,16 @@ export class DataService {
             .get(this.serviceUrl + "v1/products")
             .map((res: Response) => res.json());
     }
+        
+    createOrder(data: any): any {
+
+        let token = localStorage.getItem('mws.token');
+        let headers = new Headers({ "Content-Type": "application/json" });
+        headers.append("Authorization",`Bearer ${token}`);
+        let option = new RequestOptions({ headers: headers });
+
+        return this.http
+            .post(this.serviceUrl + "v1/customers", data, option)
+            .map((res: Response) => res.json());
+    }
 }
