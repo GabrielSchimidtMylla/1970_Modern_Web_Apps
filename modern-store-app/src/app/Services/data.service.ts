@@ -26,4 +26,10 @@ export class DataService {
             .post(this.serviceUrl + "v1/authenticate", dt, option)
             .map((res: Response) => res.json());
     }
+
+    getProducts(): any {
+        return this.http
+            .get(this.serviceUrl + "v1/products")
+            .map((res: Response) => res.json());
+    }
 }
